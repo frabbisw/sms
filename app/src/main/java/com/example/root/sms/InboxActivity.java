@@ -11,13 +11,14 @@ import java.util.ArrayList;
 
 public class InboxActivity extends AppCompatActivity implements InboxRecyclerAdapter.ItemClickListener{
     InboxRecyclerAdapter adapter;
+    ArrayList<String> animalNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inbox);
 
-        ArrayList<String> animalNames = new ArrayList<>();
+        animalNames = new ArrayList<>();
         animalNames.add("Horse");
         animalNames.add("Cow");
         animalNames.add("Camel");
@@ -34,5 +35,11 @@ public class InboxActivity extends AppCompatActivity implements InboxRecyclerAda
     @Override
     public void onItemClick(View view, int position) {
         Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+    }
+
+    public void add(View view)
+    {
+        animalNames.add(0,"bal");
+        adapter.notifyDataSetChanged();
     }
 }
